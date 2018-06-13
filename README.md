@@ -53,3 +53,7 @@ Then either
 or
 
 `$ docker run --rm -it -v $(pwd):/app -v $(pwd)/.bundle:/usr/local/bundle -w /app ruby:2.5 rubocop`
+
+## Showcase
+
+[![asciicast](https://asciinema.org/a/SiSlkRG4WApou9AJ3ulTEfeVM.png)](https://asciinema.org/a/SiSlkRG4WApou9AJ3ulTEfeVM)
