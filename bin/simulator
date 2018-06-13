@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+
+require File.expand_path('../lib/command/matcher/left', __dir__)
+require File.expand_path('../lib/command/matcher/move', __dir__)
+require File.expand_path('../lib/command/matcher/place', __dir__)
+require File.expand_path('../lib/command/matcher/report', __dir__)
+require File.expand_path('../lib/command/matcher/right', __dir__)
+
+require File.expand_path('../lib/command/left', __dir__)
+require File.expand_path('../lib/command/move', __dir__)
+require File.expand_path('../lib/command/place', __dir__)
+require File.expand_path('../lib/command/report', __dir__)
+require File.expand_path('../lib/command/right', __dir__)
+
+require File.expand_path('../lib/command/resolver', __dir__)
+require File.expand_path('../lib/greeting', __dir__)
+require File.expand_path('../lib/simulator', __dir__)
+require File.expand_path('../lib/table', __dir__)
+require File.expand_path('../lib/toy_robot', __dir__)
+
+table = Table.new
+toy_robot = ToyRobot.new
+
+command_resolver = Command::Resolver.new(robot: toy_robot, table: table)
+command_resolver.commands << { Command::Matcher::Left => Command::Left }
+command_resolver.commands << { Command::Matcher::Move => Command::Move }
+command_resolver.commands << { Command::Matcher::Place => Command::Place }
+command_resolver.commands << { Command::Matcher::Report => Command::Report }
+command_resolver.commands << { Command::Matcher::Right => Command::Right }
+
+Simulator.new(table: table, robot: toy_robot, greeting: Greeting.new, command_resolver: command_resolver).run

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 require File.expand_path('../../../lib/command/resolver', __dir__)
 
-class Matcher;
+class Matcher
   def initialize(command:)
     @command = command
   end
