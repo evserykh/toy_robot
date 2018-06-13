@@ -1,0 +1,30 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  DisplayCopNames: true
+  TargetRubyVersion: 2.3
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+
+Metrics/LineLength:
+  Exclude:
+    - lib/greeting.rb
+    - spec/**/*
+
+  Max: 120
+
+Metrics/MethodLength:
+  Exclude:
+    - lib/greeting.rb
+
+Style/BlockComments:
+  Exclude:
+    - spec/**/*
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
