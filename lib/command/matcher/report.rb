@@ -6,7 +6,21 @@ module Command
       include Base
 
       def match?
-        command == 'REPORT'
+        !match.nil?
+      end
+
+      def options
+        { format: match['format'] }
+      end
+
+      private
+
+      def match
+        @match ||= command.match(pattern)
+      end
+
+      def pattern
+        /REPORT\s?(?<format>JSON|HTML)?/
       end
     end
   end

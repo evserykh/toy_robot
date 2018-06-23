@@ -1,3 +1,4 @@
+require File.expand_path('../command', __dir__)
 require File.expand_path('base', __dir__)
 
 module Command
@@ -13,8 +14,9 @@ module Command
     end
 
     def execute
-      return unless table.include?(row, column)
-
+      unless table.include?(row, column)
+        raise Command::RobotNotOnTableError, 'The specified cell extend beyond the table'
+      end
       robot.table = table
       robot.row = row
       robot.column = column

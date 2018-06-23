@@ -26,13 +26,6 @@ describe Command::Move do
       end
     end
 
-    context 'when the robot is not on a table' do
-      before { subject.execute }
-
-      it { expect(robot).not_to receive(:row=) }
-      it { expect(robot).not_to receive(:column=) }
-    end
-
     context 'when after movement the robot stays on the table' do
       before do
         allow(table).to receive(:include?).and_return(true)

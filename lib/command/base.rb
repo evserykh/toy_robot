@@ -1,3 +1,5 @@
+require File.expand_path('../command', __dir__)
+
 module Command
   module Base
     def self.included(base)
@@ -11,7 +13,7 @@ module Command
     end
 
     def execute
-      return unless robot.on_table?
+      raise RobotNotOnTableError, "The robot isn't on a table" unless robot.on_table?
       action
     end
 

@@ -13,5 +13,11 @@ describe Command::Matcher::Report do
       subject { described_class.new(command: 'PORT') }
       it { expect(subject.match?).to eq false }
     end
+
+    context 'when the command equals REPORT JSON' do
+      subject { described_class.new(command: 'REPORT JSON') }
+      it { expect(subject.match?).to eq true }
+      it { expect(subject.options[:format]).to eq 'JSON' }
+    end
   end
 end

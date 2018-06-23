@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+require File.expand_path('../../../lib/command', __dir__)
 require File.expand_path('../../../lib/command/place', __dir__)
 require File.expand_path('../../../lib/toy_robot', __dir__)
 
@@ -21,12 +22,8 @@ describe Command::Place do
 
     context 'when the table does not include the cell' do
       before { allow(table).to receive(:include?).and_return(false) }
-      before { subject.execute }
 
-      it { expect(robot.table).to eq nil }
-      it { expect(robot.row).to eq nil }
-      it { expect(robot.column).to eq nil }
-      it { expect(robot.direction).to eq nil }
+      it { expect { subject.execute }.to raise_error Command::RobotNotOnTableError }
     end
   end
 end

@@ -1,20 +1,27 @@
+require File.expand_path('../formatter', __dir__)
 require File.expand_path('base', __dir__)
 
 module Command
   class Report
-    attr_reader :output
+    attr_reader :output, :format, :formatter_class
 
     include Base
 
     def initialize(options)
       super
       @output = options.fetch(:output, $stdout)
+      @format = options[:format]
+      @formatter_class = options.fetch(:formatter_class, Formatter)
     end
 
     private
 
     def action
-      output.puts "#{robot.row},#{robot.column},#{robot.direction}"
+      output.puts formatter.message
+    end
+
+    def formatter
+      formatter_class.new(robot: robot, format: format)
     end
   end
 end

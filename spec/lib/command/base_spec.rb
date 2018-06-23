@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+require File.expand_path('../../../lib/command', __dir__)
 require File.expand_path('../../../lib/command/base', __dir__)
 
 class Jump
@@ -23,15 +24,15 @@ describe Command::Base do
     context 'when the robot is not on a table' do
       before { allow(robot).to receive(:on_table?).and_return(false) }
 
-      it 'should not invoke action method' do
+      it 'should raise an exception' do
+        expect { subject.execute }.to raise_error Command::RobotNotOnTableError
         expect(subject).not_to receive(:action)
-        subject.execute
       end
     end
 
     context 'when the method action is not implemented' do
       before { allow(robot).to receive(:on_table?).and_return(true) }
-      it { expect { subject.execute }.to raise_error(NotImplementedError) }
+      it { expect { subject.execute }.to raise_error NotImplementedError }
     end
   end
 end
