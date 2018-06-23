@@ -28,4 +28,4 @@ command_resolver.commands << { Command::Matcher::Place => Command::Place }
 command_resolver.commands << { Command::Matcher::Report => Command::Report }
 command_resolver.commands << { Command::Matcher::Right => Command::Right }
 
-Simulator.new(table: table, robot: toy_robot, greeting: Greeting.new, command_resolver: command_resolver).run
+Simulator.new(greeting: Greeting.new, command_resolver: command_resolver).run

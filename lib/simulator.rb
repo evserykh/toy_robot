@@ -1,11 +1,9 @@
 require File.expand_path('command', __dir__)
 
 class Simulator
-  attr_reader :robot, :table, :greeting, :command_resolver, :output
+  attr_reader :greeting, :command_resolver, :output
 
   def initialize(options)
-    @robot = options.fetch(:robot)
-    @table = options.fetch(:table)
     @greeting = options.fetch(:greeting)
     @command_resolver = options.fetch(:command_resolver)
     @output = options.fetch(:output, $stdout)
