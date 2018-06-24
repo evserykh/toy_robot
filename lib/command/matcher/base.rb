@@ -1,11 +1,7 @@
 module Command
   module Matcher
-    module Base
-      def self.included(base)
-        base.class_eval do
-          attr_reader :command
-        end
-      end
+    class Base
+      attr_reader :command
 
       def initialize(options)
         @command = options.fetch(:command)

@@ -3,9 +3,7 @@ require File.expand_path('base', __dir__)
 
 module Command
   module Matcher
-    class Place
-      include Base
-
+    class Place < Base
       attr_reader :directions
 
       def initialize(options)

@@ -1,9 +1,7 @@
 require File.expand_path('base', __dir__)
 
 module Command
-  class Left
-    include Base
-
+  class Left < Base
     private
 
     def action

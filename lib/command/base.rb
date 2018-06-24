@@ -1,12 +1,8 @@
 require File.expand_path('../command', __dir__)
 
 module Command
-  module Base
-    def self.included(base)
-      base.class_eval do
-        attr_reader :robot
-      end
-    end
+  class Base
+    attr_reader :robot
 
     def initialize(options)
       @robot = options.fetch(:robot)

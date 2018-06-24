@@ -3,8 +3,7 @@ require 'spec_helper'
 require File.expand_path('../../../lib/command', __dir__)
 require File.expand_path('../../../lib/command/base', __dir__)
 
-class Jump
-  include Command::Base
+class Jump < Command::Base
 end
 
 describe Command::Base do

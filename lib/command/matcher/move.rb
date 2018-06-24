@@ -2,9 +2,7 @@ require File.expand_path('base', __dir__)
 
 module Command
   module Matcher
-    class Move
-      include Base
-
+    class Move < Base
       def match?
         command == 'MOVE'
       end

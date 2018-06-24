@@ -2,9 +2,7 @@ require File.expand_path('base', __dir__)
 
 module Command
   module Matcher
-    class Report
-      include Base
-
+    class Report < Base
       def match?
         !match.nil?
       end

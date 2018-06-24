@@ -2,10 +2,8 @@ require File.expand_path('../formatter', __dir__)
 require File.expand_path('base', __dir__)
 
 module Command
-  class Report
+  class Report < Base
     attr_reader :output, :format, :formatter_class
-
-    include Base
 
     def initialize(options)
       super

@@ -2,9 +2,7 @@ require File.expand_path('../movement', __dir__)
 require File.expand_path('base', __dir__)
 
 module Command
-  class Move
-    include Base
-
+  class Move < Base
     private
 
     def table
